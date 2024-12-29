@@ -6,12 +6,13 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sign Up'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.symmetric(horizontal: size.width * 0.1),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -42,6 +43,10 @@ class SignupScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacementNamed(context, '/login');
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.yellow,
+                foregroundColor: Colors.white,
+              ),
               child: const Text('Sign Up'),
             ),
           ],
