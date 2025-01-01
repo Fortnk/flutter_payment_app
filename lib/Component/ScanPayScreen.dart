@@ -1,5 +1,6 @@
 // scan_pay_screen.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_payment_app/Component/QRcodeScanner.dart';
 
 class ScanPayScreen extends StatelessWidget {
   const ScanPayScreen({super.key});
@@ -57,7 +58,7 @@ class ScanPayScreen extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // Add functionality to handle scanning
+                    QRCodeScanner.scanQRCode(context);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.yellow,

@@ -1,5 +1,5 @@
-// card_services_screen.dart
 import 'package:flutter/material.dart';
+import 'TransactionScreen.dart';
 
 class CardServicesScreen extends StatelessWidget {
   const CardServicesScreen({super.key});
@@ -44,7 +44,12 @@ class CardServicesScreen extends StatelessWidget {
               title: 'Transaction History',
               color: Colors.blue,
               onTap: () {
-                // Handle transaction history
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const TransactionHistoryScreen(),
+                  ),
+                );
               },
             ),
           ],

@@ -1,5 +1,7 @@
-// Update in home_screen.dart
 import 'package:flutter/material.dart';
+import 'AccountScreen.dart';
+import 'PayBillsScreen.dart';
+import 'TransactionScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,7 +16,12 @@ class _HomeScreenState extends State<HomeScreen> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-      if (_selectedIndex == 2) {
+      if (_selectedIndex == 1) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const PayBillsScreen()),
+        );
+      } else if (_selectedIndex == 2) {
         Navigator.pushNamed(context, '/profile');
       }
     });
@@ -89,6 +96,17 @@ class _HomeScreenState extends State<HomeScreen> {
           Navigator.pushNamed(context, '/scan_pay');
         } else if (title == 'Card Services') {
           Navigator.pushNamed(context, '/card_services');
+        } else if (title == 'Account') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const AccountsScreen()),
+          );
+        } else if (title == 'Transaction') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const TransactionHistoryScreen()),
+          );
         }
       },
       child: Card(

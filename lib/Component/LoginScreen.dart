@@ -56,7 +56,8 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(width: 10),
                 _buildSocialButton(Icons.g_mobiledata, 'Google', Colors.red),
                 const SizedBox(width: 10),
-                _buildSocialButton(Icons.alternate_email, 'X', Colors.black),
+                _buildSocialButton(
+                    Icons.alternate_email, 'Github', Colors.black),
               ],
             )
           ],

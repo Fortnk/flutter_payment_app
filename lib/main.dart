@@ -6,6 +6,8 @@ import 'package:flutter_payment_app/Component/HomeScreen.dart';
 import 'package:flutter_payment_app/Component/ProfileScreen.dart';
 import 'package:flutter_payment_app/Component/ScanPayScreen.dart';
 import 'package:flutter_payment_app/Component/CardServicesScreen.dart';
+import 'package:flutter_payment_app/Component/AccountScreen.dart';
+import 'package:flutter_payment_app/Component/TransactionScreen.dart';
 
 void main() {
   runApp(const PaymentApp());
@@ -34,6 +36,8 @@ class PaymentApp extends StatelessWidget {
         '/profile': (context) => const ProfileScreen(),
         '/scan_pay': (context) => const ScanPayScreen(),
         '/card_services': (context) => const CardServicesScreen(),
+        '/accounts': (context) => const AccountsScreen(),
+        '/transaction_history': (context) => const TransactionHistoryScreen(),
       },
     );
   }
