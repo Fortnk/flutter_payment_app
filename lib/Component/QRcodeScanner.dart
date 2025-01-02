@@ -1,4 +1,3 @@
-// utils/qr_code_scanner.dart
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
@@ -24,8 +23,8 @@ class QRCodeScannerScreen extends StatelessWidget {
       ),
       body: MobileScanner(
         onDetect: (barcode, args) {
-          if (barcode.rawValue != null) {
-            final String code = barcode.rawValue!;
+          final String? code = barcode.rawValue;
+          if (code != null) {
             Navigator.pop(context);
             showDialog(
               context: context,

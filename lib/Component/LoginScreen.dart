@@ -52,12 +52,13 @@ class LoginScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _buildSocialButton(Icons.facebook, 'Facebook', Colors.blue),
-                const SizedBox(width: 10),
-                _buildSocialButton(Icons.g_mobiledata, 'Google', Colors.red),
+                _buildSocialButton(Icons.facebook, 'F', Colors.blue, context),
                 const SizedBox(width: 10),
                 _buildSocialButton(
-                    Icons.alternate_email, 'Github', Colors.black),
+                    Icons.g_mobiledata, 'G', Colors.red, context),
+                const SizedBox(width: 10),
+                _buildSocialButton(
+                    Icons.alternate_email, 'G', Colors.black, context),
               ],
             )
           ],
@@ -66,14 +67,21 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSocialButton(IconData icon, String label, Color color) {
-    return ElevatedButton.icon(
-      onPressed: () {},
-      icon: Icon(icon, color: Colors.white),
-      label: Text(label, style: const TextStyle(color: Colors.white)),
+  Widget _buildSocialButton(
+      IconData icon, String label, Color color, BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        // Add your social login logic here
+        Navigator.pushReplacementNamed(context, '/home');
+      },
       style: ElevatedButton.styleFrom(
         backgroundColor: color,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        shape: CircleBorder(),
+        padding: EdgeInsets.all(20),
+      ),
+      child: Text(
+        label,
+        style: const TextStyle(color: Colors.white),
       ),
     );
   }
