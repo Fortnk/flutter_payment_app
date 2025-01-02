@@ -29,42 +29,47 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('FF19 Payment App'),
+        centerTitle: true,
+        toolbarHeight: 80, // Increase the height of the AppBar
       ),
-      body: Padding(
-        padding: EdgeInsets.all(size.width * 0.05),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Welcome Back!',
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Padding(
+            padding: EdgeInsets.all(constraints.maxWidth * 0.05),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildFeatureCard(
-                    size, Icons.account_circle, 'Account', context),
-                _buildFeatureCard(
-                    size, Icons.monetization_on, 'Transaction', context),
+                const Text(
+                  'Welcome Back!',
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _buildFeatureCard(constraints.biggest, Icons.account_circle,
+                        'Account', context),
+                    _buildFeatureCard(constraints.biggest,
+                        Icons.monetization_on, 'Transaction', context),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _buildFeatureCard(constraints.biggest,
+                        Icons.qr_code_scanner, 'Scan & Pay', context),
+                    _buildFeatureCard(constraints.biggest, Icons.credit_card,
+                        'Card Services', context),
+                  ],
+                ),
               ],
             ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildFeatureCard(
-                    size, Icons.qr_code_scanner, 'Scan & Pay', context),
-                _buildFeatureCard(
-                    size, Icons.credit_card, 'Card Services', context),
-              ],
-            ),
-          ],
-        ),
+          );
+        },
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
