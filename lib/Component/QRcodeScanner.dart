@@ -22,23 +22,26 @@ class QRCodeScannerScreen extends StatelessWidget {
         title: const Text('QR Code Scanner'),
       ),
       body: MobileScanner(
-        onDetect: (barcode, args) {
-          final String? code = barcode.rawValue;
-          if (code != null) {
-            Navigator.pop(context);
-            showDialog(
-              context: context,
-              builder: (context) => AlertDialog(
-                title: const Text('QR Code Detected'),
-                content: Text('Scanned Code: $code'),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(context),
-                    child: const Text('OK'),
-                  ),
-                ],
-              ),
-            );
+        onDetect: (barcodeCapture) {
+          final List<Barcode> barcodes = barcodeCapture.barcodes;
+          if (barcodes.isNotEmpty) {
+            final String? code = barcodes.first.rawValue;
+            if (code != null) {
+              Navigator.pop(context);
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('QR Code Detected'),
+                  content: Text('Scanned Code: $code'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text('OK'),
+                    ),
+                  ],
+                ),
+              );
+            }
           }
         },
       ),
