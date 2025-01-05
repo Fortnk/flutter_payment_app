@@ -1,4 +1,3 @@
-// profile_screen.dart
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -31,24 +30,30 @@ class ProfileScreen extends StatelessWidget {
               style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
             const SizedBox(height: 20),
-            ListTile(
-              leading: const Icon(Icons.shopping_bag),
-              title: const Text('My Orders'),
-              onTap: () {},
+            _buildProfileOption(
+              icon: Icons.shopping_bag,
+              title: 'My Orders',
+              onTap: () {
+                _showFeatureDialog(context, 'My Orders');
+              },
             ),
-            ListTile(
-              leading: const Icon(Icons.payment),
-              title: const Text('Payment Methods'),
-              onTap: () {},
+            _buildProfileOption(
+              icon: Icons.payment,
+              title: 'Payment Methods',
+              onTap: () {
+                _showFeatureDialog(context, 'Payment Methods');
+              },
             ),
-            ListTile(
-              leading: const Icon(Icons.star),
-              title: const Text('My Reviews'),
-              onTap: () {},
+            _buildProfileOption(
+              icon: Icons.star,
+              title: 'My Reviews',
+              onTap: () {
+                _showFeatureDialog(context, 'My Reviews');
+              },
             ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Settings'),
+            _buildProfileOption(
+              icon: Icons.settings,
+              title: 'Settings',
               onTap: () {
                 Navigator.push(
                   context,
@@ -66,8 +71,9 @@ class ProfileScreen extends StatelessWidget {
               icon: const Icon(Icons.logout),
               label: const Text('Logout'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.yellow,
-                foregroundColor: Colors.white,
+                backgroundColor: Colors.black, // Change button color to black
+                foregroundColor:
+                    const Color.fromRGBO(242, 200, 54, 1), // Change text color
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -75,6 +81,47 @@ class ProfileScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildProfileOption({
+    required IconData icon,
+    required String title,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Card(
+        color: Colors.black,
+        elevation: 5,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        child: ListTile(
+          leading: Icon(icon, color: Color.fromRGBO(242, 200, 54, 1)),
+          title: Text(
+            title,
+            style: const TextStyle(
+                fontSize: 16, color: Color.fromRGBO(242, 200, 54, 1)),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showFeatureDialog(BuildContext context, String featureName) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(featureName),
+        content: const Text('Will be activated in the next update.'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text('OK'),
+          ),
+        ],
       ),
     );
   }
@@ -145,13 +192,15 @@ class SettingsScreen extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Card(
+        color: Colors.black,
         elevation: 5,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: ListTile(
-          leading: Icon(icon, color: Colors.yellow),
+          leading: Icon(icon, color: Color.fromRGBO(242, 200, 54, 1)),
           title: Text(
             title,
-            style: const TextStyle(fontSize: 16),
+            style: const TextStyle(
+                fontSize: 16, color: Color.fromRGBO(242, 200, 54, 1)),
           ),
         ),
       ),
@@ -163,7 +212,7 @@ class SettingsScreen extends StatelessWidget {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(featureName),
-        content: Text('$featureName feature is under development.'),
+        content: const Text('Will be activated in the next update.'),
         actions: [
           TextButton(
             onPressed: () {

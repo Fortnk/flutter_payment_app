@@ -1,4 +1,3 @@
-// transaction_history_screen.dart
 import 'package:flutter/material.dart';
 
 class TransactionHistoryScreen extends StatelessWidget {
@@ -33,24 +32,65 @@ class TransactionHistoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Transaction History'),
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              // Add your refresh logic here
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.black, // Change button color to black
+              shadowColor: Colors.black.withOpacity(0.5),
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            child: const Icon(
+              Icons.refresh,
+              color: Color.fromRGBO(242, 200, 54, 1), // Change icon color
+            ),
+          ),
+        ],
       ),
       body: ListView.builder(
         itemCount: transactions.length,
         itemBuilder: (context, index) {
           return Card(
+            color: Colors.black, // Change card color to black
             margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+            elevation: 5, // Add shadow to the box
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
             child: ListTile(
               leading: Image.asset(
                 transactions[index]['logo']!,
                 width: 40,
                 height: 40,
               ),
-              title: Text(transactions[index]['description']!),
+              title: Text(
+                transactions[index]['description']!,
+                style: const TextStyle(
+                  color: Color.fromRGBO(242, 200, 54, 1), // Change text color
+                ),
+              ),
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(transactions[index]['date']!),
-                  Text(transactions[index]['company']!),
+                  Text(
+                    transactions[index]['date']!,
+                    style: const TextStyle(
+                      color:
+                          Color.fromRGBO(242, 200, 54, 1), // Change text color
+                    ),
+                  ),
+                  Text(
+                    transactions[index]['company']!,
+                    style: const TextStyle(
+                      color:
+                          Color.fromRGBO(242, 200, 54, 1), // Change text color
+                    ),
+                  ),
                 ],
               ),
               trailing: Text(

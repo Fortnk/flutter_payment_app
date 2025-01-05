@@ -20,11 +20,27 @@ class AccountsScreen extends StatelessWidget {
         itemCount: accounts.length,
         itemBuilder: (context, index) {
           return Card(
+            color: Colors.black, // Change card color to black
             margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+            elevation: 5, // Add shadow to the box
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
             child: ListTile(
-              leading: const Icon(Icons.account_balance, color: Colors.yellow),
-              title: Text(accounts[index]['name']!),
-              subtitle: Text('Account Number: ${accounts[index]['number']}'),
+              leading: const Icon(Icons.account_balance,
+                  color: Color.fromRGBO(242, 200, 54, 1)),
+              title: Text(
+                accounts[index]['name']!,
+                style: const TextStyle(
+                    color:
+                        Color.fromRGBO(242, 200, 54, 1)), // Change text color
+              ),
+              subtitle: Text(
+                'Account Number: ${accounts[index]['number']}',
+                style: const TextStyle(
+                    color:
+                        Color.fromRGBO(242, 200, 54, 1)), // Change text color
+              ),
               onTap: () {
                 Navigator.push(
                   context,

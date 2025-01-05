@@ -1,4 +1,3 @@
-// main.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_payment_app/assets/LoginScreen.dart';
 import 'package:flutter_payment_app/assets/SignupScreen.dart';
@@ -22,10 +21,12 @@ class PaymentApp extends StatelessWidget {
       title: 'Payment App',
       theme: ThemeData(
         primarySwatch: Colors.yellow,
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor:
+            const Color.fromARGB(255, 218, 171, 32), // Change background color
         appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.yellow,
-          foregroundColor: Colors.white,
+          backgroundColor: Color.fromARGB(
+              255, 218, 171, 32), // Change AppBar background color
+          foregroundColor: Colors.black, // Change AppBar foreground color
         ),
       ),
       initialRoute: '/login',

@@ -70,13 +70,16 @@ class PayBillsScreen extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Card(
-        elevation: 5,
+        color: Colors.black, // Change card color to black
+        elevation: 5, // Add shadow to the box
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: ListTile(
           leading: Icon(icon, color: color),
           title: Text(
             title,
-            style: const TextStyle(fontSize: 16),
+            style: const TextStyle(
+                fontSize: 16,
+                color: Color.fromRGBO(242, 200, 54, 1)), // Change text color
           ),
         ),
       ),
